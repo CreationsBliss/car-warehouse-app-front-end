@@ -26,6 +26,7 @@
   border-radius: 5px;
   margin-top: 20px;
   padding: 10px 30px;
+  width: 100%;
 }
 
 .continueWithGoogleBtn:hover {
@@ -36,4 +37,9 @@
 .login-container{
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+.authentication-btn{
+  width: 100%;
+  padding: 5px 0px;
 }

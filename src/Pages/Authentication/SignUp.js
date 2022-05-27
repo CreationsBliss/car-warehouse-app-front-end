@@ -1,52 +1,74 @@
 import React from 'react';
 import { Button, Card, Spinner } from 'react-bootstrap';
 import './Login.css';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../src/firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-
-const Login = () => {
+const SignUp = () => {
 
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
   const { register, formState: { errors }, handleSubmit } = useForm();
 
   const [
-    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
     user,
     loading,
     error,
-  ] = useSignInWithEmailAndPassword(auth);
+  ] = useCreateUserWithEmailAndPassword(auth);
+
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  const navigate = useNavigate();
 
   let signInError;
 
-  if (loading || gLoading) {
+  if (loading || gLoading || updating) {
     return <Loading></Loading>
   }
 
-  if (error || gError) {
-    signInError = <p className='text-danger mt-3'> {error?.message || gError?.message} </p>
+  if (error || gError || updateError) {
+    signInError = <p className='text-danger mt-3'> {error?.message || gError?.message || updateError?.message} </p>
   }
 
   if (user || gUser) {
     console.log(user || gUser);
   }
 
-  const onSubmit = data => {
+  const onSubmit = async data => {
     console.log(data);
-    signInWithEmailAndPassword(data.email, data.password);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    console.log("Update done");
+    navigate('/');
   }
 
   return (
     <div className='login-container'>
       <Card style={{ width: '18rem' }} className='mx-auto my-5'>
         <Card.Body>
-          <Card.Title className='text-center'>Log In</Card.Title>
+          <Card.Title className='text-center'>Sign Up</Card.Title>
 
           <form onSubmit={handleSubmit(onSubmit)}>
+
+            <div class="mb-3">
+              <input type="text" name='name' class="form-control" placeholder='Name' aria-describedby="emailHelp" {...register("name", {
+                required: {
+                  value: true,
+                  message: 'Name is required'
+                }
+              })} />
+              <div>
+                {errors.name?.type === 'required' && <span className='text-danger'>
+                  {
+                    errors.name.message
+                  }
+                </span>}
+              </div>
+            </div>
 
             <div class="mb-3">
               <input type="email" name='email' class="form-control" placeholder='Email' aria-describedby="emailHelp" {...register("email", {
@@ -98,10 +120,10 @@ const Login = () => {
               </div>
             </div>
             {signInError}
-            <input type="submit" className='authentication-btn' value="Login" variant="outline-secondary" />
+            <input type="submit" className='authentication-btn' value="Signup" variant="outline-secondary" />
           </form>
 
-          <small> <p className='mt-4'> Don't have an account? <Link className='text-primary text-decoration-none' to="/signUp"> Sign Up </Link> </p> </small>
+          <small> <p className='mt-4'> Have an account? <Link className='text-primary text-decoration-none' to="/signIn"> Log In </Link> </p> </small>
 
 
           <div className='orDivider'>
@@ -116,4 +138,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
