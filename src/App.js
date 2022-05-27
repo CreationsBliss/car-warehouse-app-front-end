@@ -6,6 +6,7 @@ import Menubar from './Pages/Shared/Menubar';
 import Footer from './Pages/Shared/Footer';
 import Login from './Pages/Authentication/Login';
 import SignUp from './Pages/Authentication/SignUp';
+import InventoryItemDetail from './Pages/InventoryItemDetail/InventoryItemDetail';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Menubar></Menubar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/inventory/:id' element={<InventoryItemDetail></InventoryItemDetail>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/signIn' element={<Login></Login>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>
