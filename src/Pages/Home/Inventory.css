@@ -1,0 +1,25 @@
+.update-stock-btn {
+  background-color: #f1c40f;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px 30px;
+}
+
+.update-stock-btn:hover {
+  background-color: #ffb129;
+  color: #111;
+}
+
+.inventory-container{
+  border: 1px solid #f1c40f52;
+  border-radius: 10px;
+  padding: 20px;
+}
+.inventory-container:hover{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.inventory-container img{
+  width: 50%;
+}

@@ -1,0 +1,26 @@
+.inventories-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+
+}
+.inventories-area{
+  background-color: #f8f7f7;
+}
+
+
+@media (max-width: 1400px){
+
+  .inventories-container{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 992px){
+
+  .inventories-container{
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+}

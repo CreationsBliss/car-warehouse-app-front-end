@@ -1,0 +1,56 @@
+[
+  {
+    "_id": "6290b3ba502d99e41cd767a4",
+    "name": "Toyota",
+    "description": "In order to be considered a luxury car, the vehical must have high-end features that go above and beyond the average necessities. The term luxury is used to categorize vehicles that are aquipped with better performance capabilities, lavish interios and all the latest safety and technology features.",
+    "image": "https://i.postimg.cc/FzjBwRRC/car-1.png",
+    "price": 4500000,
+    "productQuantity": 450,
+    "supplierName": "Jomuna Group"
+  },
+  {
+    "_id": "6290b3badc54d95aa2389545",
+    "name": "Volkswagen",
+    "description": "In order to be considered a luxury car, the vehical must have high-end features that go above and beyond the average necessities. The term luxury is used to categorize vehicles that are aquipped with better performance capabilities, lavish interios and all the latest safety and technology features.",
+    "image": "https://i.postimg.cc/fybY4WMj/car-2.png",
+    "price": 5500000,
+    "productQuantity": 550,
+    "supplierName": "Akij Group"
+  },
+  {
+    "_id": "6290b3badf5e547f10811003",
+    "name": "Ford",
+    "description": "In order to be considered a luxury car, the vehical must have high-end features that go above and beyond the average necessities. The term luxury is used to categorize vehicles that are aquipped with better performance capabilities, lavish interios and all the latest safety and technology features.",
+    "image": "https://i.postimg.cc/m2t78rXT/car-3.png",
+    "price": 6500000,
+    "productQuantity": 650,
+    "supplierName": "City Group"
+  },
+  {
+    "_id": "6290b3ba2878f41782459e9e",
+    "name": "Tesla",
+    "description": "In order to be considered a luxury car, the vehical must have high-end features that go above and beyond the average necessities. The term luxury is used to categorize vehicles that are aquipped with better performance capabilities, lavish interios and all the latest safety and technology features.",
+    "image": "https://i.postimg.cc/jjQfLn54/car-4.png",
+    "price": 7500000,
+    "productQuantity": 750,
+    "supplierName": "Padma Group"
+  },
+  {
+    "_id": "6290b3ba2d661722404fc009",
+    "name": "BMW",
+    "description": "In order to be considered a luxury car, the vehical must have high-end features that go above and beyond the average necessities. The term luxury is used to categorize vehicles that are aquipped with better performance capabilities, lavish interios and all the latest safety and technology features.",
+    "image": "https://i.postimg.cc/hvFbmRn9/car-5.png",
+    "price": 8500000,
+    "productQuantity": 850,
+    "supplierName": "Meghna Group"
+  },
+  {
+    "_id": "6290b3ba2d661722404fc019",
+    "name": "Ferrari",
+    "description": "In order to be considered a luxury car, the vehical must have high-end features that go above and beyond the average necessities. The term luxury is used to categorize vehicles that are aquipped with better performance capabilities, lavish interios and all the latest safety and technology features.",
+    "image": "https://i.postimg.cc/mDJN9dKW/car-7.png",
+    "price": 9500000,
+    "productQuantity": 950,
+    "supplierName": "Bashundhara Group"
+  }
+]
