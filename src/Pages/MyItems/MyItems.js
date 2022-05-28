@@ -9,15 +9,34 @@ const MyItems = () => {
   const [user] = useAuthState(auth);
   const [items, setItems] = useState([]);
 
+
+  // useEffect(() => {
+  //   const getItems = async () => {
+  //     const email = user.email;
+  //     const url = `http://localhost:5000/item?email=${email}`;
+  //     const { data } = await axios.get(url);
+  //     setItems(data);
+  //   }
+  //   getItems();
+  // }, [user])
+
+
+
   useEffect(() => {
     const getItems = async () => {
       const email = user.email;
       const url = `http://localhost:5000/item?email=${email}`;
-      const { data } = await axios.get(url);
+      const { data } = await axios.get(url, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      });
       setItems(data);
     }
     getItems();
   }, [user])
+
+
 
   return (
     <div className='container py-5'>

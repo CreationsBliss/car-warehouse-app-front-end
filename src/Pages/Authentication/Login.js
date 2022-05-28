@@ -8,6 +8,7 @@ import Loading from '../Shared/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 
 
@@ -42,20 +43,40 @@ const Login = () => {
   }
 
   if (user || gUser) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
 
   const resetPassword = async () => {
-    const userEmail = getValues('email')
-    console.log(userEmail);
-
+    const userEmail = getValues('email');
     await sendPasswordResetEmail(userEmail);
     toast('Sent email');
   }
 
-  const onSubmit = data => {
-    console.log(data);
-    signInWithEmailAndPassword(data.email, data.password);
+  const onSubmit = async data => {
+    // console.log(data);
+    await signInWithEmailAndPassword(data.email, data.password);
+
+
+    // for access token
+    const userEmail = getValues('email');
+    // console.log(userEmail);
+    // const { userData } = await axios.post('http://localhost:5000/signIn', { email: userEmail });
+    // console.log(userData);
+
+    fetch('http://localhost:5000/signIn', {
+      method: 'POST',
+      body: JSON.stringify({ email: userEmail }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem('accessToken', data.accessToken);
+        navigate(from, { replace: true });
+      });
+
+
   }
 
   return (
