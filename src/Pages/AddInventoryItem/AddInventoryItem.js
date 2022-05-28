@@ -1,10 +1,14 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import './AddInventoryItem.css'
+import './AddInventoryItem.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const AddInventoryItem = () => {
 
+  const [user] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
+
   const onSubmit = data => {
     console.log(data);
     const url = `http://localhost:5000/inventory/`;
@@ -15,16 +19,17 @@ const AddInventoryItem = () => {
       },
       body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(result => {
-      console.log(result);
-    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result);
+      })
   };
 
   return (
     <div className='w-50 mx-auto py-5'>
       <h1 className='pb-5 text-center'>Add Inventory Item</h1>
       <form className='d-flex flex-column add-item-form' onSubmit={handleSubmit(onSubmit)}>
+        <input className='mb-2' value={user.email} type="email" {...register("email")} />
         <input className='mb-2' placeholder='Product image url' type="text" {...register("image")} />
         <input className='mb-2' placeholder='Product name' {...register("name", { required: true, maxLength: 20 })} />
         <input className='mb-2' placeholder='Product price' type="number" {...register("price")} />

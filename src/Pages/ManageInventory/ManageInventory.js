@@ -6,7 +6,7 @@ import ManageInventoryItem from './ManageInventoryItem';
 
 const ManageInventory = () => {
 
-  const [inventories, setInventories] = useInventories();
+  const [inventories] = useInventories();
 
   return (
     <div className='container pb-5'>
