@@ -14,12 +14,12 @@ const ManageInventoryItem = ({ inventory }) => {
       fetch(url, {
         method: 'DELETE'
       })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        const remaining = inventories.filter(inventory => inventory._id !== id);
-        setInventories(remaining);
-      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          const remaining = inventories.filter(inventory => inventory._id !== id);
+          setInventories(remaining);
+        })
     }
   }
 

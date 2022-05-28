@@ -30,7 +30,7 @@ const Menubar = () => {
               {
                 user && <>
                   <Nav.Link as={Link} to="/manageInventory">Manage Inventory</Nav.Link>
-                  <Nav.Link as={Link} to="/"> Add Item </Nav.Link>
+                  <Nav.Link as={Link} to="/addInventoryItem"> Add Inventory Item </Nav.Link>
                   <Nav.Link as={Link} to="/myItems">My Items</Nav.Link>
                 </>
               }
