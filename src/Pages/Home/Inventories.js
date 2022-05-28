@@ -19,7 +19,7 @@ const Inventories = () => {
         <p className='lead'>Delearship available for new stylish car</p>
         <div className="inventories-container mt-5">
           {
-            inventories.map(inventory => <Inventory key={inventory._id} inventory={inventory}></Inventory>)
+            inventories.slice(0, 6).map(inventory => <Inventory key={inventory._id} inventory={inventory}></Inventory>)
           }
         </div>
         <div>
