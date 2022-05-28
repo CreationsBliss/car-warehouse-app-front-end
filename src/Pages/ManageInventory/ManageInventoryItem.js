@@ -1,9 +1,17 @@
-import React from 'react';
-import useInventories from '../../hooks/useInventories';
+import React, { useEffect, useState } from 'react';
+// import useInventories from '../../hooks/useInventories';
 
 const ManageInventoryItem = ({ inventory }) => {
 
-  const [inventories, setInventories] = useInventories();
+  // const [inventories, setInventories] = useInventories();
+
+  const [inventories, setInventories] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/inventory')
+      .then(res => res.json())
+      .then(data => setInventories(data));
+  }, [inventories]);
 
   const { _id, name, image, price, description, productQuantity, supplierName } = inventory;
 

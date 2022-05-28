@@ -1,0 +1,23 @@
+.header404 {
+  color: red;
+  font-weight: 700;
+  font-size: 100px;
+  text-align: center;
+}
+
+.sub-header404 {
+  color: red;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+}
+
+.detail-header404 {
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+}
+
+.not-found-container{
+  padding: 100px 0px!important;
+}

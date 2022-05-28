@@ -12,6 +12,7 @@ import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import AddInventoryItem from './Pages/AddInventoryItem/AddInventoryItem';
 import MyItems from './Pages/MyItems/MyItems';
 import ContactUs from './Pages/ContactUs/ContactUs';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path='/contact' element={<ContactUs></ContactUs>}></Route>
         <Route path='/signIn' element={<Login></Login>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
