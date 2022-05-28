@@ -1,0 +1,9 @@
+.add-item-form textarea {
+  height: 150px;
+  padding: 8px 10px;
+  resize: none;
+}
+
+.add-item-form input {
+  padding: 8px 10px;
+}
