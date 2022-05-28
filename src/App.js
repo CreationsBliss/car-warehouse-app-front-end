@@ -7,6 +7,7 @@ import Footer from './Pages/Shared/Footer';
 import Login from './Pages/Authentication/Login';
 import SignUp from './Pages/Authentication/SignUp';
 import InventoryItemDetail from './Pages/InventoryItemDetail/InventoryItemDetail';
+import RequireAuth from './Pages/Authentication/RequireAuth';
 
 function App() {
   return (
@@ -14,7 +15,12 @@ function App() {
       <Menubar></Menubar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/inventory/:id' element={<InventoryItemDetail></InventoryItemDetail>}></Route>
+        <Route path='/inventory/:id' element={
+          <RequireAuth>
+            <InventoryItemDetail></InventoryItemDetail>
+          </RequireAuth>
+        }>
+        </Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/signIn' element={<Login></Login>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>
