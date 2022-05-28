@@ -45,8 +45,8 @@ function App() {
         }>
         </Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
-        <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/contact' element={<ContactUs></ContactUs>}></Route>
+        <Route path='/signIn' element={<Login></Login>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>
       </Routes>
       <Footer></Footer>
