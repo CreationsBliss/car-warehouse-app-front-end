@@ -6,6 +6,8 @@ import auth from '../../../src/firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -27,15 +29,7 @@ const Login = () => {
     error,
   ] = useSignInWithEmailAndPassword(auth);
 
-
-
-
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-
-
-
-
-
 
   let signInError;
 
@@ -51,20 +45,13 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
-
-
-  
-
   const resetPassword = async () => {
     const userEmail = getValues('email')
     console.log(userEmail);
 
     await sendPasswordResetEmail(userEmail);
-    alert('Sent email');
+    toast('Sent email');
   }
-
-
-
 
   const onSubmit = data => {
     console.log(data);
@@ -134,14 +121,11 @@ const Login = () => {
             <input type="submit" className='authentication-btn' value="Login" variant="outline-secondary" />
           </form>
 
+          <small> <p className='mt-4'> Forget password? <button type="button" className='text-primary btn btn-link text-decoration-none' onClick={resetPassword} >Reset Password </button> </p> </small>
 
-          <small> <p className='mt-4'> Forget password? <Link className='text-primary text-decoration-none' to='' onClick={resetPassword} > Reset Password </Link> </p> </small>
-
-
-
+          <ToastContainer />
 
           <small> <p className='mt-4'> Don't have an account? <Link className='text-primary text-decoration-none' to="/signUp"> Sign Up </Link> </p> </small>
-
 
           <div className='orDivider'>
             <div className="dividerLeft"></div>
