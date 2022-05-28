@@ -35,6 +35,7 @@ const Menubar = () => {
                 </>
               }
               <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
+              <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
               {
                 user ?
                   <button type="button" onClick={logout} class="menu-sign-out-button">Sign Out</button>
