@@ -8,6 +8,24 @@
   background-color: #f8f7f7;
 }
 
+.manage-inventories-btn {
+  display: inline-block;
+  background-color: #f1c40f;
+  border: none;
+  border-radius: 5px;
+  color: #111;
+  margin-top: 60px;
+  padding: 13px 80px;
+  text-decoration: none;
+  width: 350px;
+}
+.manage-inventories-btn:hover {
+  background-color: #ffb129;
+  color: #111;
+}
+
+
+
 
 @media (max-width: 1400px){
 

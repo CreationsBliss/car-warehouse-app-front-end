@@ -27,13 +27,20 @@ const Menubar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/manageInventories">Manage Inventories</Nav.Link>
-              <Nav.Link as={Link} to="/">
-                Add Item
-              </Nav.Link>
-              <Nav.Link as={Link} to="/myItems">My Items</Nav.Link>
+              {
+                user && <>
+                  <Nav.Link as={Link} to="/manageInventory">Manage Inventory</Nav.Link>
+                  <Nav.Link as={Link} to="/"> Add Item </Nav.Link>
+                  <Nav.Link as={Link} to="/myItems">My Items</Nav.Link>
+                </>
+              }
               <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
-              {user ? <button type="button" onClick={logout} class="menu-sign-out-button">Sign Out</button> : <Nav.Link as={Link} to="/signIn">Sign In</Nav.Link>}
+              {
+                user ?
+                  <button type="button" onClick={logout} class="menu-sign-out-button">Sign Out</button>
+                  :
+                  <Nav.Link as={Link} to="/signIn">Sign In</Nav.Link>
+              }
             </Nav>
           </Navbar.Collapse>
         </Container>

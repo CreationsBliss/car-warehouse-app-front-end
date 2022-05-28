@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Inventory from './Inventory';
 import './Inventories.css';
+import { Link } from 'react-router-dom';
 
 const Inventories = () => {
   const [inventories, setInventories] = useState([]);
@@ -20,6 +21,9 @@ const Inventories = () => {
           {
             inventories.map(inventory => <Inventory key={inventory._id} inventory={inventory}></Inventory>)
           }
+        </div>
+        <div>
+          <Link to='/manageInventory' className='manage-inventories-btn'> Manage Inventories</Link>
         </div>
       </div>
     </div>

@@ -1,0 +1,24 @@
+.manage-inventory-items{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+
+
+
+@media (max-width: 1400px){
+
+  .manage-inventory-items{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 992px){
+
+  .manage-inventory-items{
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+}
