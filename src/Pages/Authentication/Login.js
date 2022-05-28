@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, Spinner } from 'react-bootstrap';
 import './Login.css';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../src/firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 
 
 const Login = () => {
@@ -17,7 +18,7 @@ const Login = () => {
 
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
-  const { register, formState: { errors }, handleSubmit } = useForm();
+  const { register, formState: { errors }, handleSubmit, getValues } = useForm();
 
   const [
     signInWithEmailAndPassword,
@@ -25,6 +26,16 @@ const Login = () => {
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
+
+
+
+
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+
+
+
+
 
   let signInError;
 
@@ -39,6 +50,21 @@ const Login = () => {
   if (user || gUser) {
     navigate(from, { replace: true });
   }
+
+
+
+  
+
+  const resetPassword = async () => {
+    const userEmail = getValues('email')
+    console.log(userEmail);
+
+    await sendPasswordResetEmail(userEmail);
+    alert('Sent email');
+  }
+
+
+
 
   const onSubmit = data => {
     console.log(data);
@@ -102,9 +128,17 @@ const Login = () => {
                 </span>}
               </div>
             </div>
+
             {signInError}
+
             <input type="submit" className='authentication-btn' value="Login" variant="outline-secondary" />
           </form>
+
+
+          <small> <p className='mt-4'> Forget password? <Link className='text-primary text-decoration-none' to='' onClick={resetPassword} > Reset Password </Link> </p> </small>
+
+
+
 
           <small> <p className='mt-4'> Don't have an account? <Link className='text-primary text-decoration-none' to="/signUp"> Sign Up </Link> </p> </small>
 

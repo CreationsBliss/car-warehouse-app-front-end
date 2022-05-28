@@ -7,7 +7,7 @@ import Item from './Item';
 const MyItems = () => {
 
   const [user] = useAuthState(auth);
-  const [items, setItems] = useState();
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const getItems = async () => {
@@ -24,7 +24,7 @@ const MyItems = () => {
       <h1 className='text-center mb-5'>My Items: {items?.length} </h1>
       <div className="manage-inventory-items">
         {
-          items?.map(item => <Item key={item._id} item={item}></Item>)
+          items?.map(item => <Item key={item._id} item={item} setItems={setItems} items={items}></Item>)
         }
       </div>
     </div>

@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Item = ({ item }) => {
+const Item = ({ item, items, setItems }) => {
 
   const { _id, name, image, price, description, productQuantity, supplierName } = item;
-
 
   const handleItemDelete = id =>{
     const proceed = window.confirm('Do you want to delete?');
@@ -15,7 +14,11 @@ const Item = ({ item }) => {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        if(data.deletedCount > 0){
+          console.log("Deleted successfully");
+          const remaining = items.filter(item => item._id !== id);
+          setItems(remaining);
+        }
       } )
     }
   }
