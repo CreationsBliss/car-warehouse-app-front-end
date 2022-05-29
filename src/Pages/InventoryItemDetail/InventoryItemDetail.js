@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 const InventoryItemDetail = () => {
 
   const { id } = useParams();
-
   const [inventory, setInventory] = useState({});
 
 
@@ -21,16 +20,6 @@ const InventoryItemDetail = () => {
 
 
   // Restock 
-  const handleRestock = (event) => {
-    event.preventDefault();
-    // const supplierInputProductQuantity = document.getElementById('exampleRestock1').value;
-    // // const productQuantityFromServer = {inventory.productQuantity};
-    // console.log(supplierInputProductQuantity);
-  }
-
-
-
-  // Delivered 
   const { register, formState: { errors }, handleSubmit } = useForm();
   const onSubmit = (data) => {
     const totalQuantity = parseFloat(data.quantity) + parseFloat(inventory.productQuantity);
@@ -52,9 +41,6 @@ const InventoryItemDetail = () => {
       });
   };
 
-
-
-
   return (
     <div className='inventory-item-detail-container'>
       <img src={inventory.image} alt="car pic" />
@@ -65,6 +51,7 @@ const InventoryItemDetail = () => {
       <p>Supplier Name: {inventory.supplierName}</p>
       <p> <small>{inventory.description}</small> </p>
       <button className='update-stock-btn'> Delivered </button>
+
 
       {/* Restock Product Quantity */}
       <div>
@@ -79,8 +66,6 @@ const InventoryItemDetail = () => {
 
         </div>
       </div>
-
-
 
 
       <div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Spinner } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import './Login.css';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../src/firebase.init';
@@ -59,9 +59,6 @@ const Login = () => {
 
     // for access token
     const userEmail = getValues('email');
-    // console.log(userEmail);
-    // const { userData } = await axios.post('http://localhost:5000/signIn', { email: userEmail });
-    // console.log(userData);
 
     fetch('http://localhost:5000/signIn', {
       method: 'POST',
@@ -142,7 +139,6 @@ const Login = () => {
 
             <input type="submit" className='authentication-btn' value="Login" variant="outline-secondary" />
           </form>
-
           <small> <p className='mt-4'> Forget password? <button type="button" className='text-primary btn btn-link text-decoration-none' onClick={resetPassword} >Reset Password </button> </p> </small>
 
           <ToastContainer />
