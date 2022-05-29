@@ -8,15 +8,36 @@ const InventoryItemDetail = () => {
 
   const { id } = useParams();
   const [inventory, setInventory] = useState({});
+  const [reload, setReload] = useState(false);
 
 
   useEffect(() => {
     const url = `http://localhost:5000/inventory/${id}`;
-
     fetch(url)
       .then(res => res.json())
       .then(data => setInventory(data));
-  }, []);
+  }, [reload]);
+
+
+  // Delivery
+  const delivery = e => {
+    const stockQuantity = parseInt(inventory?.productQuantity);
+    const totalQuantity = stockQuantity - 1;
+    const url = `http://localhost:5000/inventory/${id}`;
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ totalQuantity }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('Success:', data);
+        setReload(!reload);
+        toast('Your Product Deliver successfully');
+      })
+  };
 
 
   // Restock 
@@ -34,6 +55,7 @@ const InventoryItemDetail = () => {
     })
       .then(res => res.json())
       .then(data => {
+        setReload(!reload);
         toast('Quantity Updated')
       })
       .catch((error) => {
@@ -50,12 +72,11 @@ const InventoryItemDetail = () => {
       <p>Product Quantity: {inventory.productQuantity}</p>
       <p>Supplier Name: {inventory.supplierName}</p>
       <p> <small>{inventory.description}</small> </p>
-      <button className='update-stock-btn'> Delivered </button>
+      <button className='update-stock-btn' onClick={delivery}> Delivered </button>
 
 
-      {/* Restock Product Quantity */}
+      {/* Restock Product Quantity Form */}
       <div>
-        {/* <button>Delivered</button> */}
         <div className='update-uqantity-field-container'>
           <form onSubmit={handleSubmit(onSubmit)}>
             <input type="number" {...register("quantity")} placeholder="Number of Quantity" className='inputQuantityField' />
@@ -66,7 +87,6 @@ const InventoryItemDetail = () => {
 
         </div>
       </div>
-
 
       <div>
         <Link to='/manageInventory' className='manage-inventories-btn'> Manage Inventories</Link>
