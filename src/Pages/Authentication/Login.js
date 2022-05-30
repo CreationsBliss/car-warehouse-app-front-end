@@ -60,7 +60,7 @@ const Login = () => {
     // for access token
     const userEmail = getValues('email');
 
-    fetch('http://localhost:5000/signIn', {
+    fetch('https://protected-meadow-91560.herokuapp.com/signIn', {
       method: 'POST',
       body: JSON.stringify({ email: userEmail }),
       headers: {

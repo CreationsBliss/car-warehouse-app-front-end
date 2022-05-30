@@ -11,7 +11,7 @@ const ManageInventory = () => {
   const [inventories, setInventories] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/inventory')
+    fetch('https://protected-meadow-91560.herokuapp.com/inventory')
       .then(res => res.json())
       .then(data => setInventories(data));
   }, [inventories]);

@@ -8,7 +8,7 @@ const Item = ({ item, items, setItems }) => {
     const proceed = window.confirm('Do you want to delete?');
     if(proceed){
       console.log('Item deleted with id',  id);
-      const url = `http://localhost:5000/item/${id}`;
+      const url = `https://protected-meadow-91560.herokuapp.com/item/${id}`;
       fetch(url, {
         method: 'DELETE'
       })

@@ -13,7 +13,7 @@ const MyItems = () => {
   useEffect(() => {
     const getItems = async () => {
       const email = user.email;
-      const url = `http://localhost:5000/item?email=${email}`;
+      const url = `https://protected-meadow-91560.herokuapp.com/item?email=${email}`;
       const { data } = await axios.get(url, {
         headers: {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`

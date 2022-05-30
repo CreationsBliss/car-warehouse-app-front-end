@@ -12,7 +12,7 @@ const InventoryItemDetail = () => {
 
 
   useEffect(() => {
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://protected-meadow-91560.herokuapp.com/inventory/${id}`;
     fetch(url)
       .then(res => res.json())
       .then(data => setInventory(data));
@@ -23,7 +23,7 @@ const InventoryItemDetail = () => {
   const delivery = e => {
     const stockQuantity = parseInt(inventory?.productQuantity);
     const totalQuantity = stockQuantity - 1;
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://protected-meadow-91560.herokuapp.com/inventory/${id}`;
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -45,7 +45,7 @@ const InventoryItemDetail = () => {
   const onSubmit = (data) => {
     const totalQuantity = parseFloat(data.quantity) + parseFloat(inventory.productQuantity);
 
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://protected-meadow-91560.herokuapp.com/inventory/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -80,7 +80,7 @@ const InventoryItemDetail = () => {
         <div className='update-uqantity-field-container'>
           <form onSubmit={handleSubmit(onSubmit)}>
             <input type="number" {...register("quantity")} placeholder="Number of Quantity" className='inputQuantityField' />
-            <input type="submit" className='update-stock-btn' value="Add Product" />
+            <input type="submit" className='update-stock-btn' value="Restock Item" />
           </form>
 
           <ToastContainer />
