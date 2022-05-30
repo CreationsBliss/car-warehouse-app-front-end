@@ -1,18 +1,18 @@
-# Getting Started with Create React App
+# Vehica Car Warehouse App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Here is the project [Link](https://vehica-car-warehouse.web.app/).
 
-## Available Scripts
+## How this website works?
 
-In the project directory, you can run:
+Vehica is a car warehouse management app. Here registered user can upload & delete their inventory items. User can restock inventory items also. This website is fully responive. 
 
-### `npm start`
+### App features and functionality
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Vehica is a car management app
+* Here user can sign up & sign in
+* User can upload product
+* User can update product quantity (restock)
+* He can delete the inventoy item as well
 
 ### `npm test`
 

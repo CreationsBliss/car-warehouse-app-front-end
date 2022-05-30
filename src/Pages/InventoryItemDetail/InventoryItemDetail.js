@@ -76,11 +76,12 @@ const InventoryItemDetail = () => {
 
 
       {/* Restock Product Quantity Form */}
-      <div>
-        <div className='update-uqantity-field-container'>
+      <div className='update-qantity-field-container'>
+        <h4>Restock the item</h4>
+        <div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <input type="number" {...register("quantity")} placeholder="Number of Quantity" className='inputQuantityField' />
-            <input type="submit" className='update-stock-btn' value="Restock Item" />
+            <input type="submit" className='update-stock-btn' value="Add Quantity" />
           </form>
 
           <ToastContainer />
